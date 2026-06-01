@@ -1,0 +1,142 @@
+Category,Subcategory
+General,Amusement
+General,Clothing
+General,Food & Beverage Vending
+General,Food for home consumption
+General,TPP
+General,Commercial Rental
+Alcoholic Beverage,Beer Sales
+Alcoholic Beverage,Beer purchase
+Alcoholic Beverage,Liquor Sales
+Alcoholic Beverage,Wine Sales
+Alcoholic Beverage,Wine purchase
+Alcoholic Beverage,Complimentary Drinks by location
+Alcoholic Beverage,Liquor purchase invoice 1 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 2 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 3 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 4 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 5 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 6 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 7 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 8 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 9 (deprecated)
+Alcoholic Beverage,Liquor purchase invoice 10 (deprecated)
+Food & Beverage,Restaurant Food & Beverage
+Food & Beverage,Remaining Food & Beverage
+Food & Beverage,Third Party Delivery State Exempt
+Food & Beverage,Service Charge / Gratuities
+Hotel & Motel,Transient Lodging
+Hotel & Motel,City Tax
+Hotel & Motel,Special City Tax
+Hotel & Motel,TDTO City
+Hotel & Motel,State Tax
+Hotel & Motel,Special State Tax
+Hotel & Motel,County Tax
+Hotel & Motel,Special County Tax
+Hotel & Motel,Phone Tax
+Hotel & Motel,Additional County Exempt
+Hotel & Motel,Additional City Exempt
+Hotel & Motel,Room Revenue
+Hotel & Motel,Rental / Leasing
+Hotel & Motel,Service / Labor
+Hotel & Motel,Telecommunication
+Hotel & Motel,Audio Visual Rental
+Hotel & Motel,Laundry Vending
+Hotel & Motel,Meeting Room Charge
+B&O,B&O Manufacturing
+B&O,B&O Retailing
+B&O,B&O Royalties
+B&O,B&O Service & Other Activities ($1 million or greater in prior year)
+B&O,"B&O Service & Other Activities and/or Gambling Contests of Chance (less than $50,000 a year)"
+B&O,B&O Wholesaling
+Bad Debt,Bad Debt - General
+Bad Debt,Bad Debt - Food & Bev
+Bad Debt,Bad Debt - Alcoholic Bev
+Bad Debt,Bad Debt - B&O
+Bad Debt,Bad Debt - Hotel Motel
+PIF,PIF
+Manufacturing,General Manufacturing
+Environmental,Litter Tax
+Third Party Vendors,Uber Eats
+Third Party Vendors,Door Dash
+Third Party Vendors,Grubhub
+Third Party Vendors,EzCater
+Hotel & Motel Exemptions,Charitable / Nonprofit Organizations (501(c)(3))
+Hotel & Motel Exemptions,Educational Institutions (College and University institutions)
+Hotel & Motel Exemptions,Federal Government
+Hotel & Motel Exemptions,Foreign Diplomats
+Hotel & Motel Exemptions,Online Travel Companies (OTC)
+Hotel & Motel Exemptions,Permanent Resident or Long Term Stays
+Hotel & Motel Exemptions,State and Local Government agencies
+Parking,Week Day
+Parking,Weekend
+Parking,Monthly
+Parking,Valet Parking
+Hotel/Motel Misc,Room Charges
+Hotel/Motel Misc,Technology Fee
+Hotel/Motel Misc,Meeting Room Charge
+Hotel/Motel Misc,Local Phone Charges
+Hotel/Motel Misc,Long Distance Charges
+Hotel/Motel Misc,Damage Charges
+Hotel/Motel Misc,Linen Charges
+Hotel/Motel Misc,Laundry Vending
+Hotel/Motel Misc,Key Charges
+Hotel/Motel Misc,Fax Charges
+Hotel/Motel Misc,Misc Charges
+Hotel/Motel Misc,Cleaning Charges
+Hotel/Motel Misc,Pack up Charges
+Hotel/Motel Misc,No Notice
+Hotel/Motel Misc,Late Charges
+Hotel/Motel Misc,Late Check Out
+Hotel/Motel Misc,Dish Package Rental
+Hotel/Motel Misc,Sale of Assets
+Hotel/Motel Misc,Missing/Damaged Wireless Device
+Hotel/Motel Misc,Pet Fees
+Hotel/Motel Misc,No Show Account
+Hotel/Motel Misc,State Tax
+Hotel/Motel Misc,Phone Tax
+Hotel/Motel Misc,Special State Tax
+Hotel/Motel Misc,County Tax
+Hotel/Motel Misc,City Tax
+Hotel/Motel Misc,Bad Debt
+Hotel/Motel Misc,Retail Sales
+Hotel/Motel Misc,Snack And Vending
+Hotel/Motel Misc,Special County Tax
+Hotel/Motel Misc,Special City Tax
+Hotel/Motel Misc,TDTO City
+Hotel/Motel Misc,Occupied Room Nights
+Hotel/Motel Misc,Total Room Nights
+Hotel/Motel Misc,Property Days
+Hotel/Motel Misc,Available Room Nights
+Alcoholic Beverage Misc,Liters purchased from atlanta beverage
+Alcoholic Beverage Misc,Liters purchased from atlanta wholesale
+Alcoholic Beverage Misc,Liters purchased from better brands
+Alcoholic Beverage Misc,Liters purchased from classic city bev
+Alcoholic Beverage Misc,Liters purchased from dixie bottle
+Alcoholic Beverage Misc,Liters purchased from eagle rock distributors
+Alcoholic Beverage Misc,Liters purchased from empire distribution
+Alcoholic Beverage Misc,Liters purchased from general wholesale
+Alcoholic Beverage Misc,Liters purchased from ga crown distributing
+Alcoholic Beverage Misc,Liters purchased from grape fields
+Alcoholic Beverage Misc,Liters purchased from leon farmer
+Alcoholic Beverage Misc,Liters purchased from mckesson liq
+Alcoholic Beverage Misc,Liters purchased from national distributing co
+Alcoholic Beverage Misc,Liters purchased from ne sales dist inc
+Alcoholic Beverage Misc,Liters purchased from northwest sales
+Alcoholic Beverage Misc,Liters purchased from package liquor
+Alcoholic Beverage Misc,Liters purchased from premium beverage
+Alcoholic Beverage Misc,Liters purchased from savannah distributing
+Alcoholic Beverage Misc,Liters purchased from state whls
+Alcoholic Beverage Misc,Liters purchased from united distributors
+Alcoholic Beverage Misc,Liters purchased from other dist
+Alcoholic Beverage Misc,Liters purchased from non-listed dist
+Alcoholic Beverage Misc,Beginning Alcohol Inventory - Liters
+Alcoholic Beverage Misc,Ending Alcohol Inventory - Liters
+Alcoholic Beverage Misc,Average ounces per drink poured
+Alcoholic Beverage Misc,Average price per drink poured
+Alcoholic Beverage Misc,Average price per 12oz draft beer
+Alcoholic Beverage Misc,Beer Purchases
+Alcoholic Beverage Misc,Wine Purchases
+Alcoholic Beverage Misc,Liquor Purchases
+General Misc,Retail Delivery Fee
+Environmental,Litter Tax
