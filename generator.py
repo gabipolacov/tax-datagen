@@ -1,5 +1,6 @@
 import csv
 from openpyxl import Workbook
+import random
 
 
 def load_subcategories(path):
@@ -11,11 +12,13 @@ def load_subcategories(path):
     return subcategories
 
 def random_number_amount(): 
-    gross = round(random.uniform(50, 10000000), 2)
-    exempt = round(random.uniform(50, gross), 2)
-    taxable = round(gross - exempt), 2
+    rate = round(random.uniform(0, 10), 2)
+    gross = round(random.uniform(50, 100000), 2)
+    exempt = round(random.uniform(0, gross), 2)
+    taxable = round((gross - exempt), 2)
+    st_collected = taxable * rate
 
-    return gross, exempt, taxable
+    return gross, exempt, taxable, st_collected
 
 
 
@@ -33,7 +36,7 @@ def make_excel(num_transaction, state, subcategory, store_id):
         "City",
         "Zip Code",
         "Subcategory",
-        "Gross Sales"
+        "Gross Sales",
         "Exempt sales",
         "Taxable sales",
         "Tax Collected",
@@ -42,7 +45,10 @@ def make_excel(num_transaction, state, subcategory, store_id):
     ]
     ws.append(headers)
 
+    
+
     for t in range(num_transaction):
+        gross, exempt, taxable, st_collected = random_number_amount()
         row = [
             store_id,              # E-commerce → blank Store Id
             state,
@@ -50,10 +56,10 @@ def make_excel(num_transaction, state, subcategory, store_id):
             "Los Angeles",
             "90001",
             subcategory,
-            100.00,
-            20.00,
-            80.00,
-            6.40,
+            gross,
+            exempt,
+            taxable,
+            st_collected,
             0.00,
             0.00,
             0.00,
