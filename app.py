@@ -1,5 +1,5 @@
 import streamlit as st
-from generator import make_excel, load_subcategories
+from generator import make_excel, load_subcategories, load_states
 
 st.title("Tax DataGen")
 st.write("Generate BasicAvalara test data")
@@ -22,16 +22,8 @@ store_id = ""
 if mode == "Outlet":
     store_id = st.text_input("Store ID")
 
-location_type = st.selectbox(
-    "Select main location filter",
-    ["State", "County", "City", "Zip Code"]
-)
-
-if location_type == "State":
-    state_type = st.text_input("State")
-elif location_type == "County":
-    county_type = st.text_input("County")
-elif location_type == "City":
-    city_type = st.text_input("City")
-elif location_type == "Zip Code":
-    zip_type = st.text_input("Zip Code") 
+state_list = load_states("data/uszips.csv")
+state = st.selectbox("State", state_list)
+county = st.text_input("County")
+city = st.text_input("City")
+zip_code = st.text_input("Zip Code")

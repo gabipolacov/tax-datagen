@@ -2,7 +2,6 @@ import csv
 from openpyxl import Workbook
 import random
 
-
 def load_subcategories(path):
 
     final_list = {}
@@ -16,9 +15,15 @@ def load_subcategories(path):
                 final_list[category] = [subcategory]
             else:
                 final_list[category].append(subcategory)
-
     return final_list
 
+def load_states(path):
+    state_list = set()
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            state_list.add(row["state_name"])
+    return sorted(state_list)
 
 def random_number_amount(): 
     rate = round(random.uniform(0, 10), 2)
@@ -28,8 +33,6 @@ def random_number_amount():
     st_collected = taxable * rate
 
     return gross, exempt, taxable, st_collected
-
-
 
 def make_excel(num_transaction, state, subcategory, store_id):
 
@@ -54,8 +57,6 @@ def make_excel(num_transaction, state, subcategory, store_id):
     ]
     ws.append(headers)
 
-    
-
     for t in range(num_transaction):
         gross, exempt, taxable, st_collected = random_number_amount()
         row = [
@@ -74,7 +75,6 @@ def make_excel(num_transaction, state, subcategory, store_id):
             0.00,
         ]
         ws.append(row)
-
 
     output_name = "BasicAvalara_test.xlsx"
     wb.save(output_name)
