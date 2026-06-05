@@ -26,3 +26,12 @@ location_type = st.selectbox(
     "Select main location filter",
     ["State", "County", "City", "Zip Code"]
 )
+
+if location_type == "State":
+    state_type = st.text_input("State")
+elif location_type == "County":
+    county_type = st.text_input("County")
+elif location_type == "City":
+    city_type = st.text_input("City")
+elif location_type == "Zip Code":
+    zip_type = st.text_input("Zip Code") 
