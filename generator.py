@@ -4,12 +4,21 @@ import random
 
 
 def load_subcategories(path):
-    subcategories = []
+
+    final_list = {}
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
+
         for row in reader:
-            subcategories.append(row["Subcategory"])
-    return subcategories
+            category = row["Category"]
+            subcategory = row["Subcategory"]
+            if category not in final_list:
+                final_list[category] = [subcategory]
+            else:
+                final_list[category].append(subcategory)
+
+    return final_list
+
 
 def random_number_amount(): 
     rate = round(random.uniform(0, 10), 2)
