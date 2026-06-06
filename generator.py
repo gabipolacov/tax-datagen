@@ -48,7 +48,7 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected
 
-def make_excel(num_transaction, state, subcategory, store_id):
+def make_excel(subcategory, num_transaction, store_id, state, county, city, zip):
 
     wb = Workbook()
     ws = wb.active
@@ -76,9 +76,9 @@ def make_excel(num_transaction, state, subcategory, store_id):
         row = [
             store_id,              # E-commerce → blank Store Id
             state,
-            "Los Angeles",
-            "Los Angeles",
-            "90001",
+            county,
+            city,
+            zip,
             subcategory,
             gross,
             exempt,
