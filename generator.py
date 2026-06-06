@@ -25,6 +25,20 @@ def load_states(path):
             state_list.add(row["state_name"])
     return sorted(state_list)
 
+def validate_location(path, state, county, city, zip):
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            match_state = (state == "" OR row["state_name"].strip().lower() == state.strip().lower())
+            match_county = (county == "" OR row["county_name"].strip().lower() == county.strip().lower())
+            match_city = (city == "" OR row["city"].strip().lower() == city.strip().lower())
+            match_zip = (zip == "" OR row["zip"] == zip)
+            if match_state and match_county and match_city and match_zip:
+                return True
+
+    return False
+
+
 def random_number_amount(): 
     rate = round(random.uniform(0, 10), 2)
     gross = round(random.uniform(50, 100000), 2)
