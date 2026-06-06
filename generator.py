@@ -1,6 +1,7 @@
 import csv
 from openpyxl import Workbook
 import random
+import os
 
 def load_subcategories(path):
 
@@ -29,10 +30,10 @@ def validate_location(path, state, county=None, city=None, zip=None):
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            match_state = (state == None or row["state_name"].strip().lower() == state.strip().lower())
-            match_county = (county == None or row["county_name"].strip().lower() == county.strip().lower())
-            match_city = (city == None or row["city"].strip().lower() == city.strip().lower())
-            match_zip = (zip == None or row["zip"] == zip)
+            match_state = (not state or row["state_name"].strip().lower() == state.strip().lower())
+            match_county = (not county or row["county_name"].strip().lower() == county.strip().lower())
+            match_city = (not city or row["city"].strip().lower() == city.strip().lower())
+            match_zip = (not zip or row["zip"] == zip)
             if match_state and match_county and match_city and match_zip:
                 return True
 
@@ -40,13 +41,17 @@ def validate_location(path, state, county=None, city=None, zip=None):
 
 
 def random_number_amount(): 
-    rate = round(random.uniform(0, 10), 2)
+    rate = round(random.uniform(0, 0.1), 4)
     gross = round(random.uniform(50, 100000), 2)
     exempt = round(random.uniform(0, gross), 2)
     taxable = round((gross - exempt), 2)
-    st_collected = taxable * rate
+    st_collected = round((taxable * rate), 2)
 
-    return gross, exempt, taxable, st_collected
+    percentage = round(random.uniform(0, 0.6), 4)
+    tax_purchases = round((gross * percentage), 2)
+    use_tax_accrued = round((tax_purchases * rate), 2)
+
+    return gross, exempt, taxable, st_collected, tax_purchases, use_tax_accrued
 
 def make_excel(subcategory, num_transaction, state, file_name=None, store_id=None, county=None, city=None, zip=None):
 
@@ -71,9 +76,9 @@ def make_excel(subcategory, num_transaction, state, file_name=None, store_id=Non
     ws.append(headers)
 
     for t in range(num_transaction):
-        gross, exempt, taxable, st_collected = random_number_amount()
+        gross, exempt, taxable, st_collected, tax_purchases, use_tax_accrued = random_number_amount()
         row = [
-            store_id,              # E-commerce → blank Store Id
+            store_id,
             state,
             county,
             city,
@@ -83,9 +88,8 @@ def make_excel(subcategory, num_transaction, state, file_name=None, store_id=Non
             exempt,
             taxable,
             st_collected,
-            0.00,
-            0.00,
-            0.00,
+            tax_purchases,
+            use_tax_accrued,
         ]
         ws.append(row)
 
@@ -94,6 +98,11 @@ def make_excel(subcategory, num_transaction, state, file_name=None, store_id=Non
     else:
         output_name = file_name
 
-    wb.save(output_name)
-    print(f"Created {output_name}")
+    if not os.path.exists("output"):
+        os.mkdir("output")
+
+    path = os.path.join("output", output_name)
+    wb.save(path)
+
+    return output_name
 
