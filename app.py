@@ -1,6 +1,6 @@
 import streamlit as st
-from generator import make_excel, load_subcategories, load_states, validate_location, fill_location
-from api_utils import validate_zip
+from generator import make_excel, load_subcategories, load_states, fill_location, validate_text
+from api_utils import validate_api
 
 us_file = "data/uszips.csv"
 st.title("Tax DataGen")
@@ -36,23 +36,29 @@ county = st.text_input("County")
 city = st.text_input("City")
 zip_code = st.text_input("Zip Code")
 
+
+
 st.divider()
 file_name = st.text_input("File name") + ".xlsx"
 generate_button = st.button("Generate")
 
 if generate_button:
-    validation = validate_location(us_file, state, county, city, zip_code)
 
-    if not validation:
-        st.error('Your location inputs do not match. Please review them.', icon="🚨")
+    if not state and not county and not city and not zip_code:
+        st.error("At least one valid location input is required.", icon="🚨")
+        st.stop()
 
-    else:
-        result = fill_location(us_file, state, county, city, zip_code)
+    if zip_code and not validate_api(zip_code, state):
+        st.error("Zip does not exist or does not match state.", icon="🚨")
+        st.stop()
 
-        if result is None:
-            st.error('Input values do not match on the list. Please review them.', icon="🚨")
-        else:
-            state, county, city, zip_code = result
-            output_name = make_excel(subcategory, num_transaction, state, file_name, store_id, county, city, zip_code)
-            st.success(output_name + ' was generated successfully.', icon="✅")
+    result = fill_location(us_file, state, county, city, zip_code)
 
+    if result is None:
+        st.error("Input values do not match on the list.", icon="🚨")
+        st.stop()
+                    
+    output_name = make_excel(subcategory, num_transaction, state, file_name,
+                        store_id, county, city, zip_code)
+
+    st.success(output_name + " was generated successfully.", icon="✅")

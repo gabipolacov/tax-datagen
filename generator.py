@@ -2,6 +2,13 @@ import csv
 from openpyxl import Workbook
 import random
 import os
+import re
+
+def validate_text(value):
+    if not value:
+        return False
+
+    return bool(re.fullmatch(r"[A-Za-z\s]+", value.strip()))
 
 def load_subcategories(path):
 
@@ -18,7 +25,7 @@ def load_subcategories(path):
                 final_list[category].append(subcategory)
     return final_list
 
-def load_states(path):
+def load_location(path):
     state_list = set()
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
@@ -26,18 +33,6 @@ def load_states(path):
             state_list.add(row["state_name"])
     return sorted(state_list)
 
-def validate_location(path, state=None, county=None, city=None, zip=None):
-    with open(path, encoding="utf-8-sig", newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            match_state = (not state or row["state_name"].strip().lower() == state.strip().lower())
-            match_county = (not county or row["county_name"].strip().lower() == county.strip().lower())
-            match_city = (not city or row["city"].strip().lower() == city.strip().lower())
-            match_zip = (not zip or row["zip"] == zip)
-            if match_state and match_county and match_city and match_zip:
-                return True
-
-    return False
 
 def fill_location(path, state=None, county=None, city=None, zip=None):
     with open(path, encoding="utf-8-sig", newline="") as f:
