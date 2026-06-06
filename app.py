@@ -35,7 +35,7 @@ city = st.text_input("City")
 zip_code = st.text_input("Zip Code")
 
 st.divider()
-file_name = st.text_input("File name")
+file_name = st.text_input("File name") + ".xlsx"
 generate_button = st.button("Generate")
 
 if generate_button:
