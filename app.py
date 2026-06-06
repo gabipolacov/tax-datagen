@@ -45,5 +45,5 @@ if generate_button:
         st.error('Your location inputs do not match. Please review them.', icon="🚨")
     else:
      output_name = make_excel(subcategory, num_transaction, state, file_name, store_id, county, city, zip_code)
-     st.success('{output_name} has been generated successfully.', icon="✅")
+     st.success(output_name + ' was generated successfully.', icon="✅")
 
