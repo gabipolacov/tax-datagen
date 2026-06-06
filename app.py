@@ -17,7 +17,7 @@ subcategory = st.selectbox(
 
 st.divider()
 
-num_transactions = st.number_input("Number of transactions", min_value=1, max_value=10000, value=10)
+num_transaction = st.number_input("Number of transactions", min_value=1, max_value=10000, value=10)
 
 st.divider()
 
@@ -34,15 +34,16 @@ county = st.text_input("County")
 city = st.text_input("City")
 zip_code = st.text_input("Zip Code")
 
+st.divider()
 file_name = st.text_input("File name")
 generate_button = st.button("Generate")
 
-if generate_button.click():
+if generate_button:
     validate_location(state, county, city, zip_code)
 
     if validate_location() is False:
         st.error('Your location inputs do not match. Please review them.', icon="🚨")
-    else
-     output_name = make_excel(subcategory, num_transactions, store_id, state, county, city, state, zip_code)
+    else:
+     output_name = make_excel(file_name, subcategory, num_transaction, store_id, state, county, city, state, zip_code)
      st.success('{output_name} has been generated successfully.', icon="✅")
 

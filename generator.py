@@ -29,10 +29,10 @@ def validate_location(path, state, county, city, zip):
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            match_state = (state == "" or row["state_name"].strip().lower() == state.strip().lower())
-            match_county = (county == "" or row["county_name"].strip().lower() == county.strip().lower())
-            match_city = (city == "" or row["city"].strip().lower() == city.strip().lower())
-            match_zip = (zip == "" or row["zip"] == zip)
+            match_state = (state == None or row["state_name"].strip().lower() == state.strip().lower())
+            match_county = (county == None or row["county_name"].strip().lower() == county.strip().lower())
+            match_city = (city == None or row["city"].strip().lower() == city.strip().lower())
+            match_zip = (zip == None or row["zip"] == zip)
             if match_state and match_county and match_city and match_zip:
                 return True
 
@@ -48,7 +48,7 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected
 
-def make_excel(file_name, subcategory, num_transaction, store_id, state, county, city, zip):
+def make_excel(file_name=None, subcategory, num_transaction, store_id=None, state, county=None, city=None, zip=None):
 
     wb = Workbook()
     ws = wb.active
@@ -89,11 +89,11 @@ def make_excel(file_name, subcategory, num_transaction, store_id, state, county,
         ]
         ws.append(row)
 
-    if file_name == ""
+    if file_name == "":
         output_name = "BasicAvalara_test.xlsx"
-    else 
+    else:
         output_name = file_name
-        
+
     wb.save(output_name)
     print(f"Created {output_name}")
 
