@@ -26,7 +26,7 @@ def load_states(path):
             state_list.add(row["state_name"])
     return sorted(state_list)
 
-def validate_location(path, state, county=None, city=None, zip=None):
+def validate_location(path, state=None, county=None, city=None, zip=None):
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -38,6 +38,24 @@ def validate_location(path, state, county=None, city=None, zip=None):
                 return True
 
     return False
+
+def fill_location(path, state=None, county=None, city=None, zip=None):
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            match_state = (not state or row["state"] == state)
+            match_county = (not county or row["county"] == county)
+            match_city = (not city or row["city"] == city)
+            match_zip = (not zip or row["zip"] == zip)
+
+            if match_state and match_city and match_county and match_zip:
+                state_output = state or row["state"]
+                county_output = county or row["county"]
+                city_output = city or row["city"]
+                zip_output = zip or row["zip"]
+                return state_output, county_output, city_output, zip_output
+            
+        return None
 
 
 def random_number_amount(): 

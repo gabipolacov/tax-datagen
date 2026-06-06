@@ -1,6 +1,7 @@
 import streamlit as st
 from generator import make_excel, load_subcategories, load_states, validate_location
 
+us_file = "data/uszips.csv"
 st.title("Tax DataGen")
 st.write("Generate BasicAvalara test data")
 
@@ -28,8 +29,8 @@ if mode == "Outlet":
 
 st.divider()
 
-state_list = load_states("data/uszips.csv")
-state = st.selectbox("State", state_list)
+state_list = load_states(us_file)
+state = st.selectbox("State", state_list, index=None, placeholder = "Select State")
 county = st.text_input("County")
 city = st.text_input("City")
 zip_code = st.text_input("Zip Code")
@@ -39,7 +40,7 @@ file_name = st.text_input("File name") + ".xlsx"
 generate_button = st.button("Generate")
 
 if generate_button:
-    validation = validate_location("data/uszips.csv", state, county, city, zip_code)
+    validation = validate_location(us_file, state, county, city, zip_code)
 
     if validation is False:
         st.error('Your location inputs do not match. Please review them.', icon="🚨")
