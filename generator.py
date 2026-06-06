@@ -48,12 +48,11 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected
 
-def make_excel(subcategory, num_transaction, store_id, state, county, city, zip):
+def make_excel(file_name, subcategory, num_transaction, store_id, state, county, city, zip):
 
     wb = Workbook()
     ws = wb.active
-    ws.title = "Data import 1"
-
+    ws.title = "Data import"
 
     headers = [
         "Store Id",
@@ -90,7 +89,11 @@ def make_excel(subcategory, num_transaction, store_id, state, county, city, zip)
         ]
         ws.append(row)
 
-    output_name = "BasicAvalara_test.xlsx"
+    if file_name == ""
+        output_name = "BasicAvalara_test.xlsx"
+    else 
+        output_name = file_name
+        
     wb.save(output_name)
     print(f"Created {output_name}")
 

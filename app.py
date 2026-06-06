@@ -34,6 +34,7 @@ county = st.text_input("County")
 city = st.text_input("City")
 zip_code = st.text_input("Zip Code")
 
+file_name = st.text_input("File name")
 generate_button = st.button("Generate")
 
 if generate_button.click():
