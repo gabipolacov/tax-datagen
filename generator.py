@@ -25,7 +25,7 @@ def load_states(path):
             state_list.add(row["state_name"])
     return sorted(state_list)
 
-def validate_location(path, state, county, city, zip):
+def validate_location(path, state, county=None, city=None, zip=None):
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -48,7 +48,7 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected
 
-def make_excel(file_name=None, subcategory, num_transaction, store_id=None, state, county=None, city=None, zip=None):
+def make_excel(subcategory, num_transaction, state, file_name=None, store_id=None, county=None, city=None, zip=None):
 
     wb = Workbook()
     ws = wb.active

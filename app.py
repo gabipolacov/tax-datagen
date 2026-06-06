@@ -39,11 +39,11 @@ file_name = st.text_input("File name")
 generate_button = st.button("Generate")
 
 if generate_button:
-    validate_location(state, county, city, zip_code)
+    validation = validate_location("data/uszips.csv", state, county, city, zip_code)
 
-    if validate_location() is False:
+    if validation is False:
         st.error('Your location inputs do not match. Please review them.', icon="🚨")
     else:
-     output_name = make_excel(file_name, subcategory, num_transaction, store_id, state, county, city, state, zip_code)
+     output_name = make_excel(subcategory, num_transaction, state, file_name, store_id, county, city, zip_code)
      st.success('{output_name} has been generated successfully.', icon="✅")
 
