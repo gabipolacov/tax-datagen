@@ -1,5 +1,6 @@
 import streamlit as st
 from generator import make_excel, load_subcategories, load_states, validate_location, fill_location
+from api_utils import validate_zip
 
 us_file = "data/uszips.csv"
 st.title("Tax DataGen")

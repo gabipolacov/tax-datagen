@@ -58,6 +58,7 @@ def fill_location(path, state=None, county=None, city=None, zip=None):
         return None
 
 
+
 def random_number_amount(): 
     rate = round(random.uniform(0, 0.1), 4)
     gross = round(random.uniform(50, 100000), 2)
