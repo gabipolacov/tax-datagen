@@ -43,14 +43,14 @@ def fill_location(path, state=None, county=None, city=None, zip=None):
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            match_state = (not state or row["state"] == state)
-            match_county = (not county or row["county"] == county)
+            match_state = (not state or row["state_name"] == state)
+            match_county = (not county or row["county_name"] == county)
             match_city = (not city or row["city"] == city)
             match_zip = (not zip or row["zip"] == zip)
 
             if match_state and match_city and match_county and match_zip:
-                state_output = state or row["state"]
-                county_output = county or row["county"]
+                state_output = state or row["state_name"]
+                county_output = county or row["county_name"]
                 city_output = city or row["city"]
                 zip_output = zip or row["zip"]
                 return state_output, county_output, city_output, zip_output
@@ -71,7 +71,7 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected, tax_purchases, use_tax_accrued
 
-def make_excel(subcategory, num_transaction, state, file_name=None, store_id=None, county=None, city=None, zip=None):
+def make_excel(subcategory, num_transaction, state=None, file_name=None, store_id=None, county=None, city=None, zip=None):
 
     wb = Workbook()
     ws = wb.active

@@ -1,5 +1,5 @@
 import streamlit as st
-from generator import make_excel, load_subcategories, load_states, validate_location
+from generator import make_excel, load_subcategories, load_states, validate_location, fill_location
 
 us_file = "data/uszips.csv"
 st.title("Tax DataGen")
@@ -42,9 +42,16 @@ generate_button = st.button("Generate")
 if generate_button:
     validation = validate_location(us_file, state, county, city, zip_code)
 
-    if validation is False:
+    if not validation:
         st.error('Your location inputs do not match. Please review them.', icon="🚨")
+
     else:
-     output_name = make_excel(subcategory, num_transaction, state, file_name, store_id, county, city, zip_code)
-     st.success(output_name + ' was generated successfully.', icon="✅")
+        result = fill_location(us_file, state, county, city, zip_code)
+
+        if result is None:
+            st.error('Input values do not match on the list. Please review them.', icon="🚨")
+        else:
+            state, county, city, zip_code = result
+            output_name = make_excel(subcategory, num_transaction, state, file_name, store_id, county, city, zip_code)
+            st.success(output_name + ' was generated successfully.', icon="✅")
 
