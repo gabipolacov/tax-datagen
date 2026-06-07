@@ -124,11 +124,17 @@ Dockerfile
 
 ## ▶️ How to run and use the Application with Docker
 
-### 1. Clone the repository
+## ⚠️ Preconditions
+
+* Ensure Docker Desktop is running before executing commands
+* Port **8501** must be available
+* Generated files will be saved in the `/output` directory
+
+### 1. Open the terminal and clone the repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd <PROJECT_FOLDER>
+git clone https://github.com/gabipolacov/tax-datagen.git
+cd tax-datagen
 ```
 
 ---
@@ -161,13 +167,6 @@ http://localhost:8501
 
 ---
 
-## ⚠️ Notes
-
-* Ensure Docker Desktop is running before executing commands
-* Port **8501** must be available
-* Generated files will be saved in the `/output` directory
-
-
 ## 5. Configure the data
 
    * Select a **Category** and **Subcategory**
@@ -177,7 +176,7 @@ http://localhost:8501
 
 ---
 
-# 6. Enter location data (flexible)
+## 6. Enter location data (flexible)
 
    You can provide:
 
@@ -190,21 +189,21 @@ http://localhost:8501
 
 ---
 
-# 7. ZIP validation (if provided)
+## 7. ZIP validation (if provided)
 
    * If a ZIP code is entered, it will be validated using an external API
    * The ZIP must exist and match the selected state
 
 ---
 
-# 8. Generate the file
+## 8. Generate the file
 
    * Enter a file name
    * Click **Generate**
 
 ---
 
-# 9. Retrieve the output
+## 9. Retrieve the output
 
    * The Excel file will be saved in the `/output` folder
    * It will contain synthetic tax transaction data based on your inputs
