@@ -30,6 +30,7 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 
 ## 📁 Project Structure
+```
 
 .
 ├── data/
@@ -43,6 +44,8 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 ├── app.py
 ├── generator.py
 └── requirements.txt
+
+```
 
 - app.py: Streamlit user interface (UI layer)
 - generator.py: Core backend logic (data processing, validation, and Excel generation)
