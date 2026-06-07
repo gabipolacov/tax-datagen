@@ -55,7 +55,8 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 - output/: Directory where generated Excel files are saved
 - README.md: Project documentation and setup instructions
 - requirements.txt: List of Python dependencies required to run the application inside a virtual environment or Docker container
-- Dockerfile: Configuration file that defines how to build the Docker image, including installing dependencies and running the Streamlit application
+- Dockerfile: Configuration file that defines how to build the Docker image
+-.dockerignore: Specifies files and directories to exclude from the Docker build context to reduce image size
 
 
 
