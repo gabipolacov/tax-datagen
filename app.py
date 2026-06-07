@@ -1,12 +1,11 @@
 import streamlit as st
 from generator import make_excel, load_subcategories, load_location, fill_location
 from api_utils import validate_api
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
-us_file = os.getenv("USZIPS_PATH")
-sub_file = os.getenv("SUBCATEGORIES_PATH")
+
+us_file = os.getenv("USZIPS_PATH", "data/uszips.csv")
+sub_file = os.getenv("SUBCATEGORIES_PATH", "data/subcategories.csv")
 
 st.title("Tax DataGen")
 st.write("Generate BasicAvalara test data")
