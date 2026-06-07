@@ -8,7 +8,7 @@ This project is an MVP designed to produce structured datasets for validating di
 
 The goal is to generate realistic and configurable test data to support application testing and edge-case validation.
 
----
+
 
 ## 🧰 Technologies Used
 - Python 3.11
@@ -17,7 +17,7 @@ The goal is to generate realistic and configurable test data to support applicat
 - CSV module
 - Docker
 
----
+
 
 ## 🌐 External API
 This project uses the Zippopotam API to validate ZIP codes and ensure consistency between ZIP codes and states.
@@ -27,7 +27,7 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
   - Validate if a ZIP code exists
   - Verify that the ZIP code matches the selected state
 
----
+
 
 ## 📁 Project Structure
 .
@@ -48,7 +48,7 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 - output/: Directory where generated Excel files are saved
 - README.md: Project documentation and setup instructions
 
---- 
+
 
 ## 📊 Features
 
@@ -97,6 +97,7 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
   - Simple web UI for generating datasets without writing code
   - Provides real-time validation messages and feedback
 
+
   ## 🚀 Future Improvements
 
 - **Improved location resolution randomness**
@@ -115,6 +116,7 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
   - Introduce support for parent company.
   - Each company could have its Filing calendar and multiple outlets
   - Each structure would be organized in separate Excel tabs for better separation and reporting.
+
 
 
 ## Getting Started
@@ -167,41 +169,75 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
    python make_excel.py
    ```
 
-   This creates `BasicAvalara_test.xlsx` in the project folder.
+## ▶️ Instructions
+
+1. **Start the application**
+
+   Run locally:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+   Or with Docker:
+
+   ```bash
+   docker run -p 8501:8501 tax-datagen
+   ```
+
+---
+
+2. **Open the app in your browser**
+
+   Go to:
+
+   ```
+   http://localhost:8501
+   ```
+
+---
+
+3. **Configure the data**
+
+   * Select a **Category** and **Subcategory**
+   * Choose the **number of transactions**
+   * Select **Mode** (E-commerce or Outlet)
+   * (Optional) Enter a **Store ID** if using Outlet mode
+
+---
+
+4. **Enter location data (flexible)**
+
+   You can provide:
+
+   * Only **State**
+   * **State + City**
+   * Only **ZIP code**
+   * Or full location (State, County, City, ZIP)
+
+   The system will attempt to complete missing fields automatically.
+
+---
+
+5. **ZIP validation (if provided)**
+
+   * If a ZIP code is entered, it will be validated using an external API
+   * The ZIP must exist and match the selected state
+
+---
+
+6. **Generate the file**
+
+   * Enter a file name
+   * Click **Generate**
+
+---
+
+7. **Retrieve the output**
+
+   * The Excel file will be saved in the `/output` folder
+   * It will contain synthetic tax transaction data based on your inputs
 
 
 
-
-## Instructions
-
-- This project works with BasicAvalara template. So the data to fill is: 
-Store Id: Store Id column is blank if the transaction is e-commerce. If not, Store ID should be provided by the user.
-
-State: User is able to select any number of states of United States or all of the states.
-
-County: should match with State.
-
-City: Should match with County and State.
-
-Zip Code: should match with city, county and state.
-User is able to choose which data should be mandatory one:
-- If user chooses State, then county, city and zip code should match state(s) selected.
-- If user chooses county, then state, city and zip code should match county(ies) selected.
-- If user chooses city, then state, county and zip code should match city(ies) selected.
-- If user chooses zip, then county, city and state should match zip(s) selected.
-
-
-Another field is subcategory which I have in a separate file.
-
-Then we have number fields.
-- Gross sales = exempt sales + taxable sales
-- Exempt sales = gross sales - taxable sales
-- Taxable sales =  gross sales - exempt sales
-- Sales Tax Collected
-- Taxable purchases
-- Use tax accrued
-
-User should be able to choose number of transactions.
-
-User should be able to select e-commerce or outlet mode. Outlet mode will provide a Store Id, ecommerce means that store ID will be blank.
 
