@@ -26,28 +26,42 @@ def load_subcategories(path):
     return final_list
 
 def load_location(path):
-    state_list = set()
+
+    location_list = {}
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            state_list.add(row["state_name"])
-    return sorted(state_list)
+            state = row["state_name"]
+            county = row["county_name"]
+            city = row["city"]
+
+            if state not in location_list:
+                location_list[state] = {}
+            
+            if county not in location_list[state]:
+                location_list[state][county] = set()
+               
+            location_list[state][county].add(city)
+
+    return location_list
 
 
-def fill_location(path, state=None, county=None, city=None, zip=None):
+def fill_location(path, state=None, county=None, city=None, zip_code=None):
+
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
             match_state = (not state or row["state_name"] == state)
             match_county = (not county or row["county_name"] == county)
             match_city = (not city or row["city"] == city)
-            match_zip = (not zip or row["zip"] == zip)
+            match_zip = (not zip_code or row["zip"] == zip_code)
 
             if match_state and match_city and match_county and match_zip:
                 state_output = state or row["state_name"]
                 county_output = county or row["county_name"]
                 city_output = city or row["city"]
-                zip_output = zip or row["zip"]
+                zip_output = zip_code or row["zip"]
+                
                 return state_output, county_output, city_output, zip_output
             
         return None
@@ -67,7 +81,7 @@ def random_number_amount():
 
     return gross, exempt, taxable, st_collected, tax_purchases, use_tax_accrued
 
-def make_excel(subcategory, num_transaction, state=None, file_name=None, store_id=None, county=None, city=None, zip=None):
+def make_excel(subcategory, num_transaction, state=None, file_name=None, store_id=None, county=None, city=None, zip_code=None):
 
     wb = Workbook()
     ws = wb.active
@@ -96,7 +110,7 @@ def make_excel(subcategory, num_transaction, state=None, file_name=None, store_i
             state,
             county,
             city,
-            zip,
+            zip_code,
             subcategory,
             gross,
             exempt,

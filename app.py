@@ -1,10 +1,11 @@
 import streamlit as st
-from generator import make_excel, load_subcategories, load_states, fill_location, validate_text
+from generator import make_excel, load_subcategories, load_location, fill_location
 from api_utils import validate_api
 
 us_file = "data/uszips.csv"
 st.title("Tax DataGen")
 st.write("Generate BasicAvalara test data")
+
 
 st.divider()
 
@@ -30,12 +31,38 @@ if mode == "Outlet":
 
 st.divider()
 
-state_list = load_states(us_file)
-state = st.selectbox("State", state_list, index=None, placeholder = "Select State")
-county = st.text_input("County")
-city = st.text_input("City")
+location_list = load_location(us_file)
+
+state = st.selectbox(
+    "State", 
+    sorted(list(location_list.keys())), 
+    index = None, 
+    placeholder = "Select State")
+
+if state:
+    county = st.selectbox(
+            "County",  
+            sorted(list(location_list[state].keys())), 
+            index = None, 
+            placeholder = "Select County")
+else:
+    county = st.text_input(
+            "County",  
+            placeholder = "Select County")
+
+if county:
+    city = st.selectbox(
+            "City",  
+            sorted(location_list[state][county]), 
+            index = None, 
+            placeholder = "Select City")
+else:
+    city = st.text_input(
+            "City",  
+            placeholder = "Select City")
 zip_code = st.text_input("Zip Code")
 
+st.write(state, county, city, zip_code)
 
 
 st.divider()
@@ -52,11 +79,12 @@ if generate_button:
         st.error("Zip does not exist or does not match state.", icon="🚨")
         st.stop()
 
-    result = fill_location(us_file, state, county, city, zip_code)
 
-    if result is None:
+    if fill_location(us_file, state, county, city, zip_code) is None:
         st.error("Input values do not match on the list.", icon="🚨")
         st.stop()
+
+    state, county, city, zip_code = fill_location(us_file, state, county, city, zip_code)
                     
     output_name = make_excel(subcategory, num_transaction, state, file_name,
                         store_id, county, city, zip_code)
