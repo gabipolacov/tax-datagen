@@ -1,3 +1,5 @@
+📄 Versión en español disponible en `README_ES.md`
+
 Tax-DataGen
 
 ## Description
