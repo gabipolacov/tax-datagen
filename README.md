@@ -31,16 +31,18 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 ## 📁 Project Structure
 
-app.py
-generator.py
-api_utils.py
-data/
-  uszips.csv
-  subcategories.csv
-output/
-README.md
-requirements.txt
-Dockerfile
+.
+├── data/
+│   ├── subcategories.csv
+│   └── uszips.csv
+├── .dockerignore
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── api_utils.py
+├── app.py
+├── generator.py
+└── requirements.txt
 
 - app.py: Streamlit user interface (UI layer)
 - generator.py: Core backend logic (data processing, validation, and Excel generation)
