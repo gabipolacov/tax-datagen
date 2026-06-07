@@ -30,15 +30,17 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 
 ## 📁 Project Structure
-.
-├── app.py
-├── generator.py
-├── api_utils.py
-├── data/
-│   ├── uszips.csv
-│   └── subcategories.csv
-├── output/
-└── README.md
+
+app.py
+generator.py
+api_utils.py
+data/
+  uszips.csv
+  subcategories.csv
+output/
+README.md
+requirements.txt
+Dockerfile
 
 - app.py: Streamlit user interface (UI layer)
 - generator.py: Core backend logic (data processing, validation, and Excel generation)
@@ -47,6 +49,8 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 - data/subcategories.csv: Dataset containing product tax categories and subcategories
 - output/: Directory where generated Excel files are saved
 - README.md: Project documentation and setup instructions
+- requirements.txt: List of Python dependencies required to run the application inside a virtual environment or Docker container
+- Dockerfile: Configuration file that defines how to build the Docker image, including installing dependencies and running the Streamlit application
 
 
 
@@ -118,86 +122,53 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
   - Each structure would be organized in separate Excel tabs for better separation and reporting.
 
 
+## ▶️ How to run and use the Application with Docker
 
-## Getting Started
+### 1. Clone the repository
 
-1. **Clone the GitHub repo**
-
-   ```powershell
-   git clone https://github.com/YOUR_USERNAME/tax-datagen.git
-   cd tax-datagen
-   ```
-
-   Replace `YOUR_USERNAME` with your GitHub username.
-
-2. **Install Python**
-
-   Install Python 3.10+ from [python.org](https://www.python.org/downloads/). During setup, check **“Add Python to PATH”**.
-
-   Verify the installation:
-
-   ```powershell
-   python --version
-   ```
-
-3. **Open a terminal in the repo folder**
-
-   If you are not already there:
-
-   ```powershell
-   cd C:\tax-datagen
-   ```
-
-4. **Create and activate the virtual environment**
-
-   ```powershell
-   python -m venv venv
-   .\venv\Scripts\Activate
-   ```
-
-   When active, your prompt should start with `(venv)`.
-
-5. **Install openpyxl**
-
-   ```powershell
-   pip install openpyxl
-   ```
-
-6. **Generate the Excel file**
-
-   ```powershell
-   python make_excel.py
-   ```
-
-## ▶️ Instructions
-
-1. **Start the application**
-
-   Run locally:
-
-   ```bash
-   streamlit run app.py
-   ```
-
-   Or with Docker:
-
-   ```bash
-   docker run -p 8501:8501 tax-datagen
-   ```
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd <PROJECT_FOLDER>
+```
 
 ---
 
-2. **Open the app in your browser**
+### 2. Build the Docker image
 
-   Go to:
+Make sure Docker is installed and running, then execute:
 
-   ```
-   http://localhost:8501
-   ```
+```bash
+docker build -t tax-datagen .
+```
 
 ---
 
-3. **Configure the data**
+### 3. Run the container
+
+```bash
+docker run -p 8501:8501 tax-datagen
+```
+
+---
+
+### 4. Open the application
+
+Go to the following URL in your browser:
+
+```
+http://localhost:8501
+```
+
+---
+
+## ⚠️ Notes
+
+* Ensure Docker Desktop is running before executing commands
+* Port **8501** must be available
+* Generated files will be saved in the `/output` directory
+
+
+## 5. Configure the data
 
    * Select a **Category** and **Subcategory**
    * Choose the **number of transactions**
@@ -206,12 +177,12 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 ---
 
-4. **Enter location data (flexible)**
+# 6. Enter location data (flexible)
 
    You can provide:
 
    * Only **State**
-   * **State + City**
+   * **State + County**
    * Only **ZIP code**
    * Or full location (State, County, City, ZIP)
 
@@ -219,21 +190,21 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 ---
 
-5. **ZIP validation (if provided)**
+# 7. ZIP validation (if provided)
 
    * If a ZIP code is entered, it will be validated using an external API
    * The ZIP must exist and match the selected state
 
 ---
 
-6. **Generate the file**
+# 8. Generate the file
 
    * Enter a file name
    * Click **Generate**
 
 ---
 
-7. **Retrieve the output**
+# 9. Retrieve the output
 
    * The Excel file will be saved in the `/output` folder
    * It will contain synthetic tax transaction data based on your inputs
