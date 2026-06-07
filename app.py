@@ -62,8 +62,6 @@ else:
             placeholder = "Select City")
 zip_code = st.text_input("Zip Code")
 
-st.write(state, county, city, zip_code)
-
 
 st.divider()
 file_name = st.text_input("File name") + ".xlsx"
