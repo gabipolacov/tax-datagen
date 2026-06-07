@@ -2,6 +2,7 @@ import streamlit as st
 from generator import make_excel, load_subcategories, load_location, fill_location
 from api_utils import validate_api
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 us_file = os.getenv("USZIPS_PATH")
