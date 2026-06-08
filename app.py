@@ -68,7 +68,12 @@ zip_code = st.text_input("Zip Code")
 
 
 st.divider()
-file_name = st.text_input("File name") + ".xlsx"
+raw_name = st.text_input("File name")
+if raw_name:
+    file_name = raw_name.strip() + ".xlsx"
+else:
+    file_name = "BasicAvalara_test.xlsx"
+
 generate_button = st.button("Generate")
 
 if generate_button:
@@ -88,7 +93,15 @@ if generate_button:
 
     state, county, city, zip_code = fill_location(us_file, state, county, city, zip_code)
                     
-    output_name = make_excel(subcategory, num_transaction, state, file_name,
-                        store_id, county, city, zip_code)
+    file_path = make_excel(subcategory, num_transaction, state, file_name,
+    store_id, county, city, zip_code)
 
-    st.success(output_name + " was generated successfully.", icon="✅")
+    st.success(file_name + " was generated successfully.", icon="✅")
+
+    with open(file_path, "rb") as f:
+        st.download_button(
+            label="Download Excel file",
+            data=f,
+            file_name=os.path.basename(file_path),
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )

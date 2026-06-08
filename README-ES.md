@@ -56,7 +56,6 @@ Este proyecto utiliza la API de Zippopotam para validar códigos ZIP y asegurar 
 * api_utils.py: Utilidades para consumir APIs externas (validación de ZIP)
 * data/uszips.csv: Dataset con mapeo de estado, condado, ciudad y código ZIP
 * data/subcategories.csv: Dataset con categorías y subcategorías impositivas
-* output/: Carpeta donde se guardan los archivos Excel generados
 * README.md: Documentación del proyecto e instrucciones de uso
 * requirements.txt: Lista de dependencias necesarias para ejecutar la aplicación
 * Dockerfile: Archivo de configuración para construir la imagen Docker
@@ -114,8 +113,8 @@ Este proyecto utiliza la API de Zippopotam para validar códigos ZIP y asegurar 
 * **Generación automática de archivos**
 
   * Genera archivos `.xlsx` con OpenPyXL
-  * Guarda resultados en `/output`
   * Permite nombre personalizado
+  * Permite descargar el archivo generado
 
 * **Interfaz interactiva**
 
@@ -232,5 +231,5 @@ El sistema completará los campos faltantes automáticamente.
 
 ## 9. Obtener resultado
 
-* El archivo Excel se guarda en `/output`
+* Click en **Download File** para descarar el archivo
 * Contiene datos sintéticos según los inputs

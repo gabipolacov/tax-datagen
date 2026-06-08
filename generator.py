@@ -121,16 +121,12 @@ def make_excel(subcategory, num_transaction, state=None, file_name=None, store_i
         ]
         ws.append(row)
 
-    if file_name == "":
-        output_name = "BasicAvalara_test.xlsx"
-    else:
-        output_name = file_name
+    output_name = file_name
 
-    if not os.path.exists("output"):
-        os.mkdir("output")
+    os.makedirs("output", exist_ok = True)
 
     path = os.path.join("output", output_name)
     wb.save(path)
 
-    return output_name
+    return path
 

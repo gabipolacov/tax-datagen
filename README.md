@@ -54,7 +54,6 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 - api_utils.py: External API utilities (ZIP code validation)
 - data/uszips.csv: Dataset containing state, county, city, and ZIP code mappings
 - data/subcategories.csv: Dataset containing product tax categories and subcategories
-- output/: Directory where generated Excel files are saved
 - README.md: Project documentation and setup instructions
 - requirements.txt: List of Python dependencies required to run the application inside a virtual environment or Docker container
 - Dockerfile: Configuration file that defines how to build the Docker image
@@ -102,8 +101,8 @@ This project uses the Zippopotam API to validate ZIP codes and ensure consistenc
 
 - **Automatic file generation**
   - Creates `.xlsx` files using OpenPyXL
-  - Saves output files into the `/output` directory
   - Supports custom file naming
+  - Allows direct download of generated files through the Streamlit interface
 
 - **Interactive Streamlit interface**
   - Simple web UI for generating datasets without writing code
@@ -213,7 +212,8 @@ http://localhost:8501
 
 ## 9. Retrieve the output
 
-   * The Excel file will be saved in the `/output` folder
+   * The Excel file will be generated
+   * By clicking **Download File**, user is able to downlod file
    * It will contain synthetic tax transaction data based on your inputs
 
 
